@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\models\user.py
+# hypothesis_version: 6.151.9
+
+['accessToken', 'admin', 'createdAt', 'credentialUrl', 'endDate', 'expiresAt', 'expiryDate', 'githubUrl', 'githubUsername', 'idToken', 'issueDate', 'lastLoginAt', 'linkedinUrl', 'liveUrl', 'onboardingComplete', 'personalInfo', 'portfolioUrl', 'projectId', 'refreshToken', 'resumeS3Uri', 'resumeUploadedAt', 'startDate', 'student', 'updatedAt', 'userId']

@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\utils\validation.py
+# hypothesis_version: 6.151.9
+
+[100, 'Invalid LinkedIn URL', 'Name cannot be empty', '[@$!%*?&]', '[A-Z]', '[a-z]', '\\d', '^(\\+91)?[6-9]\\d{9}$', 'additionalNotes', 'advanced', 'beginner', 'category', 'domain_knowledge', 'framework', 'githubRepoUrl', 'githubUsername', 'github_repo_url', 'http://', 'https://', 'hybrid', 'intermediate', 'linkedinUrl', 'linkedin_url', 'minStipend', 'name', 'onsite', 'password', 'portfolioUrl', 'portfolio_url', 'proficiencyLevel', 'programming_language', 'projectId', 'refreshToken', 'remote', 'skillName', 'skill_name', 'soft_skill', 'studentLevel', 'student_level', 'targetSkills', 'target_skills', 'timeCommitment', 'tool', 'type']

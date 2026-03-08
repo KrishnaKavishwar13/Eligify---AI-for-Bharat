@@ -1,0 +1,12 @@
+
+RUDRA DEWATWAL
+Software Engineer
+Email: rudra@example.com
+
+SKILLS
+- Python, JavaScript, TypeScript, React, Node.js
+- MongoDB, PostgreSQL, Git, Docker
+- Communication, Problem Solving
+
+EXPERIENCE
+Frontend Developer Intern at TechStart (2025)

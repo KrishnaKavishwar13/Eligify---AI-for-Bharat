@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\utils\enhanced_store.py
+# hypothesis_version: 6.151.9
+
+['*.json', 'backups', 'careerRoadmaps', 'career_roadmaps', 'data', 'dataDirectory', 'email', 'explanationCache', 'internshipId', 'internships', 'internships.json', 'location', 'minStipend', 'persistence', 'persistenceEnabled', 'profiles', 'projectId', 'projects', 'r', 'skillGapAnalyses', 'skill_gap_analyses', 'skills', 'status', 'stipend', 'type', 'userId', 'users', 'utf-8', 'w']

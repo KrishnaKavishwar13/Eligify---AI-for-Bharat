@@ -1,264 +1,298 @@
-# Requirements Document: Eligify Platform
+# Requirements Document: Eligify Platform MVP
 
 ## Introduction
 
-Eligify is an AI-driven internship eligibility intelligence platform designed to bridge the gap between student skills and internship requirements. The platform analyzes student resumes, extracts skills using AI, matches internships based on skill compatibility, detects skill gaps, and generates personalized project-based learning roadmaps to improve eligibility scores dynamically.
+Eligify is an AI-powered Employability Operating System designed to help Indian students identify skill gaps, build missing skills through guided projects, and unlock internship opportunities. This MVP focuses on delivering a stable, demo-ready platform with core functionality: student authentication, profile management with AI-powered skill extraction, simplified skill tracking, deterministic internship eligibility classification, AI-driven project generation, and simulated skill verification.
 
-### Problem Statement
-
-Students often struggle to identify which internships they are eligible for and lack clear guidance on how to improve their qualifications. Traditional job boards provide limited insight into skill gaps and offer no actionable learning paths.
-
-### Proposed Solution
-
-Eligify provides an intelligent system that:
-- Automatically analyzes resumes to extract skills
-- Matches students with suitable internships based on skill compatibility
-- Identifies specific skill gaps preventing eligibility
-- Generates personalized project-based learning roadmaps using SkillGenie AI
-- Tracks eligibility score improvements over time
-
-### Target Users
-
-- **Students**: Seeking internships and wanting to improve their qualifications
-- **Career Counselors**: Helping students identify opportunities and skill development paths
-- **Educational Institutions**: Tracking student readiness for internships
-
-### Key Features
-
-1. AI-powered resume parsing and skill extraction
-2. Intelligent internship matching based on skill compatibility
-3. Skill gap detection and visualization
-4. Project-based learning roadmap generation
-5. Dynamic eligibility score tracking
-6. Personalized dashboard with actionable insights
-
-### Unique Selling Proposition
-
-Unlike traditional job boards, Eligify doesn't just show opportunities - it provides a clear path to eligibility through AI-generated, project-based learning roadmaps that directly address skill gaps.
-
-### Use Case Flow
-
-1. Student uploads resume
-2. System extracts skills using AI
-3. System calculates eligibility scores for available internships
-4. Student views matched internships and skill gaps
-5. System generates personalized learning roadmap
-6. Student completes projects and updates profile
-7. Eligibility score improves dynamically
-
-### Assumptions & Constraints
-
-- Students have access to internet and can upload PDF/DOCX resumes
-- Internship data is available and regularly updated
-- AI models are pre-trained and accessible via API
-- System requires user authentication for personalized tracking
-- Learning roadmaps are project-based and self-paced
+The MVP prioritizes fast development (48-hour build target), minimal bugs through deterministic logic, demo stability, and low AWS costs using serverless architecture.
 
 ## Glossary
 
-- **Eligify_Platform**: The complete AI-driven internship eligibility intelligence system
-- **Resume_Parser**: AI component that extracts structured information from resume documents
-- **Skill_Extractor**: AI component that identifies and categorizes skills from resume text
-- **Eligibility_Engine**: Component that calculates compatibility scores between student skills and internship requirements
-- **Skill_Gap_Detector**: Component that identifies missing skills preventing internship eligibility
-- **SkillGenie_AI**: AI component that generates personalized project-based learning roadmaps
-- **Internship_Matcher**: Component that ranks and recommends internships based on eligibility scores
-- **Eligibility_Score**: Numerical value (0-100) representing student's qualification level for a specific internship
-- **Skill_Gap**: Difference between student's current skills and internship requirements
-- **Learning_Roadmap**: Structured sequence of projects designed to address skill gaps
-- **Project_Milestone**: Specific achievement within a learning project
-- **User**: Authenticated student or career counselor using the platform
-- **Student_Profile**: Collection of user data including skills, experience, and eligibility scores
-- **Internship_Listing**: Job posting with required skills and qualifications
+- **System**: The Eligify platform backend and frontend application
+- **Student**: A registered user seeking internship opportunities
+- **Profile**: Student's personal information, education, experience, and skills
+- **Skill_Graph**: Collection of skills associated with a student, including proficiency levels and verification status
+- **Internship**: Job opportunity listing with required skills and eligibility criteria
+- **Eligibility_Engine**: Deterministic algorithm that classifies internships based on skill matching
+- **AI_Generator**: AWS Bedrock service that generates personalized project roadmaps
+- **Project**: AI-generated learning roadmap with milestones to build specific skills
+- **Proficiency_Level**: Numeric score (0-100) representing skill mastery
+- **Match_Score**: Percentage (0-100) indicating how well a student's skills align with internship requirements
+- **Cognito**: Amazon Cognito authentication service
+- **DynamoDB**: AWS NoSQL database for storing application data
+- **S3**: AWS object storage for resume files
+- **Bedrock**: AWS managed AI service for LLM access
 
 ## Requirements
 
-### Requirement 1: User Authentication and Profile Management
+### Requirement 1: User Authentication
 
-**User Story:** As a student, I want to create an account and manage my profile, so that I can track my eligibility progress over time.
-
-#### Acceptance Criteria
-
-1. WHEN a new user provides valid email and password, THE Eligify_Platform SHALL create a user account
-2. WHEN a user provides valid credentials, THE Eligify_Platform SHALL authenticate the user and grant access
-3. WHEN a user updates profile information, THE Eligify_Platform SHALL persist the changes to the database
-4. IF a user provides invalid credentials, THEN THE Eligify_Platform SHALL reject authentication and return an error message
-5. THE Eligify_Platform SHALL encrypt user passwords before storage
-
-### Requirement 2: Resume Upload and Parsing
-
-**User Story:** As a student, I want to upload my resume, so that the system can analyze my skills and qualifications.
+**User Story:** As a student, I want to create an account and log in securely, so that I can access my personalized profile and internship recommendations.
 
 #### Acceptance Criteria
 
-1. WHEN a user uploads a PDF or DOCX file, THE Eligify_Platform SHALL accept the file for processing
-2. WHEN a resume file is uploaded, THE Resume_Parser SHALL extract text content from the document
-3. WHEN resume text is extracted, THE Skill_Extractor SHALL identify and categorize skills using AI
-4. IF a user uploads an unsupported file format, THEN THE Eligify_Platform SHALL reject the upload and notify the user
-5. WHEN skill extraction completes, THE Eligify_Platform SHALL store extracted skills in the Student_Profile
-6. THE Resume_Parser SHALL handle resumes up to 10MB in size
+1. WHEN a student provides valid email and password THEN THE System SHALL create a new account in Cognito
+2. WHEN a student provides an email that already exists THEN THE System SHALL reject the signup and return an error message
+3. WHEN a student provides valid credentials for login THEN THE System SHALL return a JWT access token and refresh token
+4. WHEN a student provides invalid credentials THEN THE System SHALL reject the login and return an authentication error
+5. WHEN a student's access token expires THEN THE System SHALL accept a valid refresh token to issue a new access token
+6. WHEN a student logs out THEN THE System SHALL invalidate the current session
 
-### Requirement 3: Skill Extraction and Categorization
+### Requirement 2: Profile Creation and Management
 
-**User Story:** As a student, I want the system to automatically identify my skills from my resume, so that I don't have to manually enter them.
-
-#### Acceptance Criteria
-
-1. WHEN resume text is provided, THE Skill_Extractor SHALL identify technical skills, soft skills, and domain knowledge
-2. WHEN skills are identified, THE Skill_Extractor SHALL categorize each skill by type (programming language, framework, tool, soft skill, domain)
-3. WHEN duplicate skills are detected, THE Skill_Extractor SHALL consolidate them into a single entry
-4. THE Skill_Extractor SHALL extract a minimum of 5 skills from any valid resume
-5. WHEN skill extraction completes, THE Eligify_Platform SHALL display extracted skills to the user for verification
-
-### Requirement 4: Internship Matching and Eligibility Calculation
-
-**User Story:** As a student, I want to see which internships I'm eligible for, so that I can apply to relevant opportunities.
+**User Story:** As a student, I want to create and update my profile with personal information and education details, so that the system can understand my background.
 
 #### Acceptance Criteria
 
-1. WHEN a Student_Profile contains skills, THE Eligibility_Engine SHALL calculate Eligibility_Score for each available Internship_Listing
-2. WHEN calculating Eligibility_Score, THE Eligibility_Engine SHALL compare student skills against internship required skills
-3. THE Eligibility_Engine SHALL produce Eligibility_Score values between 0 and 100
-4. WHEN Eligibility_Score exceeds 70, THE Internship_Matcher SHALL classify the internship as "Highly Eligible"
-5. WHEN Eligibility_Score is between 40 and 70, THE Internship_Matcher SHALL classify the internship as "Moderately Eligible"
-6. WHEN Eligibility_Score is below 40, THE Internship_Matcher SHALL classify the internship as "Low Eligibility"
-7. THE Internship_Matcher SHALL rank internships by Eligibility_Score in descending order
+1. WHEN a student uploads a resume file THEN THE System SHALL store the file in S3 with user-specific access controls
+2. WHEN a resume file exceeds 10MB THEN THE System SHALL reject the upload and return a file size error
+3. WHEN a resume file is in an unsupported format THEN THE System SHALL reject the upload and return a format error
+4. WHEN a student submits profile information THEN THE System SHALL validate required fields (name, email) before saving
+5. WHEN a student updates profile information THEN THE System SHALL persist changes to DynamoDB and return the updated profile
+6. WHEN a student requests their profile THEN THE System SHALL return all stored profile data including personal info, education, and experience
 
-### Requirement 5: Skill Gap Detection
+### Requirement 3: AI-Powered Skill Extraction
 
-**User Story:** As a student, I want to know which skills I'm missing for specific internships, so that I can focus my learning efforts.
-
-#### Acceptance Criteria
-
-1. WHEN an Internship_Listing is selected, THE Skill_Gap_Detector SHALL identify required skills not present in Student_Profile
-2. WHEN Skill_Gap is detected, THE Skill_Gap_Detector SHALL categorize gaps as "Critical" or "Nice-to-Have" based on requirement priority
-3. THE Skill_Gap_Detector SHALL calculate the impact of each Skill_Gap on Eligibility_Score
-4. WHEN multiple Skill_Gaps exist, THE Eligify_Platform SHALL display them in order of impact on eligibility
-5. THE Eligify_Platform SHALL visualize Skill_Gaps using a clear graphical representation
-
-### Requirement 6: Project-Based Learning Roadmap Generation
-
-**User Story:** As a student, I want personalized project recommendations to fill my skill gaps, so that I can improve my eligibility through practical learning.
+**User Story:** As a student, I want the system to automatically extract skills from my resume, so that I don't have to manually enter every skill.
 
 #### Acceptance Criteria
 
-1. WHEN Skill_Gaps are identified, THE SkillGenie_AI SHALL generate a Learning_Roadmap with specific projects
-2. WHEN generating a Learning_Roadmap, THE SkillGenie_AI SHALL create projects that address identified Skill_Gaps
-3. WHEN a project is generated, THE SkillGenie_AI SHALL include project title, description, learning objectives, and estimated completion time
-4. THE SkillGenie_AI SHALL generate between 3 and 7 projects per Learning_Roadmap
-5. WHEN a project is created, THE SkillGenie_AI SHALL define measurable Project_Milestones
-6. THE SkillGenie_AI SHALL prioritize projects that address Critical Skill_Gaps first
-7. WHEN a Learning_Roadmap is generated, THE Eligify_Platform SHALL persist it to the database
+1. WHEN a resume is uploaded THEN THE System SHALL invoke Bedrock to extract skills from the resume text
+2. WHEN Bedrock is unavailable THEN THE System SHALL attempt to use OpenAI API as a fallback
+3. WHEN skill extraction completes THEN THE System SHALL return a list of identified skills with normalized names
+4. WHEN skill extraction fails after all retries THEN THE System SHALL return an error and allow manual skill entry
+5. WHEN extracted skills are saved THEN THE System SHALL store each skill with status "claimed" and proficiency level 0
 
-### Requirement 7: Eligibility Score Tracking and Updates
+### Requirement 4: Skill Graph Management
 
-**User Story:** As a student, I want to see my eligibility score improve as I complete projects, so that I can track my progress toward internship readiness.
+**User Story:** As a student, I want to view and manage my skills with proficiency levels, so that I can track my learning progress.
 
 #### Acceptance Criteria
 
-1. WHEN a user marks a project as completed, THE Eligibility_Platform SHALL update the Student_Profile with newly acquired skills
-2. WHEN Student_Profile skills are updated, THE Eligibility_Engine SHALL recalculate Eligibility_Scores for all internships
-3. WHEN Eligibility_Score changes, THE Eligify_Platform SHALL display the score difference to the user
-4. THE Eligify_Platform SHALL maintain a history of Eligibility_Score changes over time
-5. WHEN a user views their dashboard, THE Eligify_Platform SHALL display current Eligibility_Scores for all matched internships
+1. WHEN a student's profile is created THEN THE System SHALL initialize an empty skill graph in DynamoDB
+2. WHEN skills are extracted from a resume THEN THE System SHALL add each skill to the skill graph with default proficiency 0
+3. WHEN a student requests their skill graph THEN THE System SHALL return all skills with name, proficiency level, and verification status
+4. WHEN a student manually adds a skill THEN THE System SHALL validate the skill name and add it to the graph with status "claimed"
+5. WHEN a skill is marked as verified THEN THE System SHALL update the proficiency level to minimum 70 and set status to "verified"
+6. THE Skill_Graph SHALL maintain a count of total skills and verified skills
 
-### Requirement 8: Dashboard and Visualization
+### Requirement 5: Internship Data Management
 
-**User Story:** As a student, I want a clear dashboard showing my eligibility status, skill gaps, and learning progress, so that I can make informed decisions about my career development.
-
-#### Acceptance Criteria
-
-1. WHEN a user logs in, THE Eligify_Platform SHALL display a personalized dashboard
-2. THE Eligify_Platform SHALL display current Eligibility_Scores for top matched internships on the dashboard
-3. THE Eligify_Platform SHALL visualize Skill_Gaps using charts or graphs
-4. THE Eligify_Platform SHALL display Learning_Roadmap progress with completion percentages
-5. WHEN a user views an internship card, THE Eligify_Platform SHALL show internship title, company, required skills, and Eligibility_Score
-6. THE Eligify_Platform SHALL provide visual indicators for eligibility categories (Highly Eligible, Moderately Eligible, Low Eligibility)
-
-### Requirement 9: Internship Data Management
-
-**User Story:** As a system administrator, I want to manage internship listings, so that students have access to current opportunities.
+**User Story:** As a system administrator, I want to seed the database with predefined internship listings, so that students have opportunities to match against.
 
 #### Acceptance Criteria
 
-1. THE Eligify_Platform SHALL store Internship_Listings with title, company, description, required skills, and application deadline
-2. WHEN an Internship_Listing is added, THE Eligify_Platform SHALL validate required fields are present
-3. WHEN an Internship_Listing application deadline passes, THE Eligify_Platform SHALL mark it as expired
-4. THE Eligify_Platform SHALL exclude expired internships from matching results
-5. WHEN Internship_Listings are updated, THE Eligibility_Engine SHALL recalculate affected Eligibility_Scores
+1. WHEN the system initializes THEN THE System SHALL load predefined internship data into DynamoDB
+2. WHEN an internship is stored THEN THE System SHALL include title, company, description, required skills, and eligibility criteria
+3. WHEN a student requests internship listings THEN THE System SHALL return all active internships
+4. WHEN an internship has required skills THEN THE System SHALL store each skill with name, proficiency level, and mandatory flag
+5. THE System SHALL support filtering internships by type (remote, onsite, hybrid)
 
-### Requirement 10: Data Persistence and Retrieval
+### Requirement 6: Deterministic Eligibility Classification
 
-**User Story:** As a user, I want my data to be saved securely, so that I can access it across sessions and devices.
-
-#### Acceptance Criteria
-
-1. WHEN user data is modified, THE Eligify_Platform SHALL persist changes to the database within 5 seconds
-2. THE Eligify_Platform SHALL store Student_Profile data including skills, completed projects, and eligibility history
-3. THE Eligify_Platform SHALL store Learning_Roadmaps with associated projects and milestones
-4. WHEN a user logs in, THE Eligify_Platform SHALL retrieve all associated data from the database
-5. THE Eligify_Platform SHALL implement database transactions to ensure data consistency
-6. IF a database operation fails, THEN THE Eligify_Platform SHALL rollback changes and notify the user
-
-### Requirement 11: API Integration and Communication
-
-**User Story:** As a developer, I want well-defined APIs between frontend and backend, so that components can communicate reliably.
+**User Story:** As a student, I want to see which internships I'm eligible for based on my current skills, so that I can focus on realistic opportunities.
 
 #### Acceptance Criteria
 
-1. THE Eligify_Platform SHALL expose RESTful API endpoints for all core operations
-2. WHEN an API request is received, THE Eligify_Platform SHALL validate request format and authentication
-3. WHEN an API operation succeeds, THE Eligify_Platform SHALL return appropriate HTTP status codes (200, 201)
-4. IF an API operation fails, THEN THE Eligify_Platform SHALL return appropriate error codes (400, 401, 404, 500) with descriptive messages
-5. THE Eligify_Platform SHALL return API responses in JSON format
-6. THE Eligify_Platform SHALL implement rate limiting to prevent API abuse
+1. WHEN a student requests internship classification THEN THE Eligibility_Engine SHALL calculate a match score for each internship
+2. WHEN calculating match score THEN THE Eligibility_Engine SHALL compare student skill proficiency against required skill proficiency
+3. WHEN match score is >= 80 AND missing mandatory skills = 0 THEN THE Eligibility_Engine SHALL classify the internship as "Eligible"
+4. WHEN match score is >= 50 AND missing mandatory skills <= 2 THEN THE Eligibility_Engine SHALL classify the internship as "Almost Eligible"
+5. WHEN match score is < 50 OR missing mandatory skills > 2 THEN THE Eligibility_Engine SHALL classify the internship as "Not Eligible"
+6. WHEN classification completes THEN THE System SHALL return three lists: eligible, almost eligible, and not eligible internships
+7. WHEN an internship is classified as "Almost Eligible" THEN THE System SHALL include a list of missing skills with current and target proficiency levels
+8. THE Eligibility_Engine SHALL ensure every internship appears in exactly one classification category
 
-### Requirement 12: AI Model Integration
+### Requirement 7: Match Score Calculation
 
-**User Story:** As a system architect, I want to integrate AI models for skill extraction and roadmap generation, so that the platform provides intelligent recommendations.
-
-#### Acceptance Criteria
-
-1. WHEN AI processing is required, THE Eligify_Platform SHALL communicate with external LLM APIs
-2. THE Eligify_Platform SHALL implement retry logic for failed AI API calls
-3. IF an AI API call fails after retries, THEN THE Eligify_Platform SHALL log the error and notify the user
-4. THE Eligify_Platform SHALL implement timeout handling for AI API calls (maximum 30 seconds)
-5. WHEN AI responses are received, THE Eligify_Platform SHALL validate response format before processing
-6. THE Eligify_Platform SHALL cache AI responses where appropriate to reduce API costs
-
-### Requirement 13: Performance and Scalability
-
-**User Story:** As a user, I want the platform to respond quickly, so that I can efficiently navigate and use features.
+**User Story:** As a student, I want to see a percentage match score for each internship, so that I can understand how close I am to being eligible.
 
 #### Acceptance Criteria
 
-1. WHEN a user requests their dashboard, THE Eligify_Platform SHALL load the page within 3 seconds
-2. WHEN resume parsing is initiated, THE Resume_Parser SHALL complete processing within 15 seconds
-3. WHEN eligibility calculation is triggered, THE Eligibility_Engine SHALL compute scores for all internships within 5 seconds
-4. THE Eligify_Platform SHALL support at least 100 concurrent users
-5. WHEN database queries are executed, THE Eligify_Platform SHALL use indexing to optimize performance
+1. WHEN calculating match score THEN THE Eligibility_Engine SHALL assign weights to each required skill based on importance
+2. WHEN a student has a required skill THEN THE Eligibility_Engine SHALL calculate proficiency gap as (required level - student level)
+3. WHEN proficiency gap <= 0 THEN THE Eligibility_Engine SHALL award full weight for that skill
+4. WHEN proficiency gap is between 1 and 20 THEN THE Eligibility_Engine SHALL award partial credit proportional to the gap
+5. WHEN proficiency gap > 20 THEN THE Eligibility_Engine SHALL award zero credit for that skill
+6. WHEN a student lacks a required skill entirely THEN THE Eligibility_Engine SHALL award zero credit and mark it as missing
+7. THE Eligibility_Engine SHALL calculate final match score as (achieved weight / total weight) * 100
+8. THE Match_Score SHALL always be between 0 and 100 inclusive
 
-### Requirement 14: Error Handling and User Feedback
+### Requirement 8: AI Project Generation
 
-**User Story:** As a user, I want clear error messages when something goes wrong, so that I understand what happened and how to proceed.
-
-#### Acceptance Criteria
-
-1. IF an error occurs during any operation, THEN THE Eligify_Platform SHALL display a user-friendly error message
-2. WHEN a file upload fails, THE Eligify_Platform SHALL specify the reason (file too large, unsupported format, etc.)
-3. WHEN AI processing fails, THE Eligify_Platform SHALL notify the user and suggest retry options
-4. THE Eligify_Platform SHALL log all errors with timestamps and context for debugging
-5. WHEN a user performs an action, THE Eligify_Platform SHALL provide visual feedback (loading indicators, success messages)
-
-### Requirement 15: Security and Privacy
-
-**User Story:** As a user, I want my personal data and resume to be protected, so that my information remains confidential.
+**User Story:** As a student, I want the system to generate a personalized project roadmap for skills I'm missing, so that I have a clear path to improve my eligibility.
 
 #### Acceptance Criteria
 
-1. THE Eligify_Platform SHALL encrypt all data in transit using HTTPS/TLS
-2. THE Eligify_Platform SHALL encrypt sensitive data at rest in the database
-3. WHEN a user uploads a resume, THE Eligify_Platform  SHALL store it securely with access restricted to the owner
-4. THE Eligify_Platform SHALL implement authentication tokens with expiration (24 hours)
-5. WHEN a user logs out, THE Eligify_Platform SHALL invalidate the authentication token
-6. THE Eligify_Platform SHALL implement input validation to prevent SQL injection and XSS attacks
+1. WHEN a student requests a project for specific skills THEN THE AI_Generator SHALL invoke Bedrock with target skills and student level
+2. WHEN Bedrock generates a project THEN THE System SHALL parse the response into structured format with title, description, and milestones
+3. WHEN a project is generated THEN THE System SHALL include at least 3 milestones with tasks and estimated hours
+4. WHEN a project is generated THEN THE System SHALL include all requested target skills in the project specification
+5. WHEN a project is generated THEN THE System SHALL store it in DynamoDB with status "suggested"
+6. WHEN a project is generated THEN THE System SHALL include a tech stack with at least one technology
+7. WHEN AI generation fails THEN THE System SHALL retry up to 3 times with exponential backoff
+8. WHEN all retries fail THEN THE System SHALL return an error message to the student
+
+### Requirement 9: Project Storage and Retrieval
+
+**User Story:** As a student, I want to view my generated projects and track their status, so that I can manage my learning journey.
+
+#### Acceptance Criteria
+
+1. WHEN a student requests their projects THEN THE System SHALL return all projects associated with their user ID
+2. WHEN a student requests a specific project THEN THE System SHALL return complete project details including milestones and resources
+3. WHEN a student accepts a project THEN THE System SHALL update the project status to "accepted"
+4. WHEN a student marks a project as in progress THEN THE System SHALL update the project status to "in_progress"
+5. WHEN a student marks a project as complete THEN THE System SHALL update the project status to "completed"
+6. THE System SHALL support filtering projects by status
+
+### Requirement 10: Simulated Skill Verification
+
+**User Story:** As a student, I want to mark projects as complete to increase my skill proficiency, so that I can unlock new internship opportunities.
+
+#### Acceptance Criteria
+
+1. WHEN a student marks a project as complete THEN THE System SHALL update all target skills in the project to proficiency level 70
+2. WHEN a student marks a project as complete THEN THE System SHALL change skill status from "claimed" to "verified"
+3. WHEN a student marks a project as complete THEN THE System SHALL set the verifiedAt timestamp to current time
+4. WHEN skill proficiency is updated THEN THE System SHALL increment the verified skills count in the skill graph
+5. WHEN skills are verified THEN THE System SHALL trigger re-classification of internships for that student
+6. WHEN re-classification completes THEN THE System SHALL return newly eligible internships to the student
+
+### Requirement 11: Eligibility Progression
+
+**User Story:** As a student, I want my internship eligibility to improve automatically when I verify new skills, so that I can see my progress toward opportunities.
+
+#### Acceptance Criteria
+
+1. WHEN a student verifies skills that fill missing mandatory requirements THEN THE System SHALL reclassify affected internships
+2. WHEN an internship moves from "Not Eligible" to "Almost Eligible" THEN THE System SHALL notify the student of the change
+3. WHEN an internship moves from "Almost Eligible" to "Eligible" THEN THE System SHALL notify the student of the change
+4. WHEN reclassification occurs THEN THE System SHALL recalculate match scores using updated skill proficiency levels
+5. THE System SHALL ensure eligibility never regresses (skills cannot become unverified)
+
+### Requirement 12: API Authentication and Authorization
+
+**User Story:** As a developer, I want all API endpoints to be protected with JWT authentication, so that only authorized users can access their data.
+
+#### Acceptance Criteria
+
+1. WHEN a request is made to a protected endpoint THEN THE System SHALL validate the JWT token in the Authorization header
+2. WHEN a JWT token is invalid or expired THEN THE System SHALL return 401 Unauthorized error
+3. WHEN a JWT token is valid THEN THE System SHALL extract the user ID and role from the token
+4. WHEN a student attempts to access another student's data THEN THE System SHALL return 403 Forbidden error
+5. WHEN a request is made without an Authorization header THEN THE System SHALL return 401 Unauthorized error
+6. THE System SHALL support only the "student" role for MVP (no admin role)
+
+### Requirement 13: Data Persistence and Consistency
+
+**User Story:** As a system operator, I want all data to be persisted reliably in DynamoDB, so that student progress is never lost.
+
+#### Acceptance Criteria
+
+1. WHEN a profile is created or updated THEN THE System SHALL persist changes to DynamoDB before returning success
+2. WHEN a skill graph is modified THEN THE System SHALL update the lastUpdated timestamp
+3. WHEN a project is generated THEN THE System SHALL assign a unique project ID and persist to DynamoDB
+4. WHEN concurrent updates occur to the same record THEN THE System SHALL use optimistic locking to prevent data corruption
+5. WHEN a database write fails THEN THE System SHALL return an error and not report success to the user
+6. THE System SHALL ensure skill graph verified count always equals the number of skills with status "verified"
+
+### Requirement 14: Resume File Storage
+
+**User Story:** As a student, I want my resume to be stored securely, so that I can reference it later and the system can re-parse it if needed.
+
+#### Acceptance Criteria
+
+1. WHEN a resume is uploaded THEN THE System SHALL generate a unique S3 key using user ID and timestamp
+2. WHEN a resume is stored in S3 THEN THE System SHALL enable server-side encryption
+3. WHEN a resume is stored THEN THE System SHALL set appropriate access controls limiting access to the owning user
+4. WHEN a resume upload succeeds THEN THE System SHALL store the S3 URI in the student's profile
+5. WHEN a student requests their resume THEN THE System SHALL generate a pre-signed URL valid for 1 hour
+6. THE System SHALL support PDF, DOCX, and TXT file formats
+
+### Requirement 15: Error Handling and Resilience
+
+**User Story:** As a student, I want the system to handle errors gracefully and provide clear error messages, so that I understand what went wrong and how to fix it.
+
+#### Acceptance Criteria
+
+1. WHEN an API request fails validation THEN THE System SHALL return 400 Bad Request with a descriptive error message
+2. WHEN an authentication error occurs THEN THE System SHALL return 401 Unauthorized with the reason
+3. WHEN a resource is not found THEN THE System SHALL return 404 Not Found with the resource type
+4. WHEN an internal error occurs THEN THE System SHALL return 500 Internal Server Error and log the full error details
+5. WHEN an external service (Bedrock, S3) fails THEN THE System SHALL retry with exponential backoff up to 3 times
+6. WHEN all retries are exhausted THEN THE System SHALL return 503 Service Unavailable with a retry-after suggestion
+7. THE System SHALL log all errors to CloudWatch with request context for debugging
+
+### Requirement 16: Performance and Scalability
+
+**User Story:** As a system operator, I want the system to respond quickly and handle multiple concurrent users, so that the demo is smooth and responsive.
+
+#### Acceptance Criteria
+
+1. WHEN a student requests their profile THEN THE System SHALL respond within 300ms at p95
+2. WHEN a student requests internship classification THEN THE System SHALL respond within 2000ms at p95 for up to 100 internships
+3. WHEN a student uploads a resume THEN THE System SHALL complete the upload within 5000ms at p95
+4. WHEN AI project generation is requested THEN THE System SHALL respond within 10000ms at p95
+5. WHEN skill verification occurs THEN THE System SHALL complete re-classification within 3000ms at p95
+6. THE System SHALL support at least 100 concurrent users without degradation
+7. THE System SHALL use Lambda provisioned concurrency for critical endpoints to minimize cold starts
+
+### Requirement 17: Security and Data Protection
+
+**User Story:** As a student, I want my personal data and resume to be protected, so that my information remains private and secure.
+
+#### Acceptance Criteria
+
+1. WHEN data is transmitted THEN THE System SHALL use HTTPS/TLS 1.2 or higher for all communication
+2. WHEN a resume is stored in S3 THEN THE System SHALL enable server-side encryption
+3. WHEN data is stored in DynamoDB THEN THE System SHALL enable encryption at rest
+4. WHEN a JWT token is issued THEN THE System SHALL set expiration to 1 hour for access tokens
+5. WHEN a password is provided THEN THE System SHALL enforce minimum 8 characters with uppercase, lowercase, number, and special character
+6. THE System SHALL not log sensitive data (passwords, tokens) to CloudWatch
+7. THE System SHALL implement rate limiting of 1000 requests per minute per user
+
+### Requirement 18: Monitoring and Observability
+
+**User Story:** As a system operator, I want to monitor system health and performance, so that I can identify and fix issues quickly.
+
+#### Acceptance Criteria
+
+1. WHEN an API request is processed THEN THE System SHALL log the request method, path, status code, and duration to CloudWatch
+2. WHEN an error occurs THEN THE System SHALL log the full error stack trace and request context
+3. WHEN Lambda functions execute THEN THE System SHALL emit custom metrics for business operations (signups, classifications, projects generated)
+4. WHEN API latency exceeds thresholds THEN THE System SHALL trigger CloudWatch alarms
+5. WHEN error rate exceeds 5% THEN THE System SHALL trigger CloudWatch alarms
+6. THE System SHALL use X-Ray for distributed tracing across Lambda functions
+
+## Non-Functional Requirements
+
+### NFR-1: Availability
+THE System SHALL maintain 99% uptime during business hours (9 AM - 9 PM IST) for the MVP period.
+
+### NFR-2: Scalability
+THE System SHALL automatically scale to handle up to 1000 concurrent users using AWS Lambda auto-scaling.
+
+### NFR-3: Maintainability
+THE System SHALL use TypeScript for type safety and include inline documentation for all public functions.
+
+### NFR-4: Cost Efficiency
+THE System SHALL optimize AWS costs by using serverless pay-per-use pricing and staying within $100/month budget for MVP.
+
+### NFR-5: Deployment Speed
+THE System SHALL support deployment of backend and frontend changes within 10 minutes using CI/CD pipelines.
+
+### NFR-6: Data Retention
+THE System SHALL retain all student data indefinitely unless the student requests account deletion.
+
+### NFR-7: Browser Compatibility
+THE System SHALL support the latest versions of Chrome, Firefox, Safari, and Edge browsers.
+
+### NFR-8: Mobile Responsiveness
+THE System SHALL provide a responsive UI that works on mobile devices with screen widths down to 375px.
+
+### NFR-9: Accessibility
+THE System SHALL follow WCAG 2.1 Level AA guidelines for basic accessibility compliance.
+
+### NFR-10: API Documentation
+THE System SHALL provide OpenAPI/Swagger documentation for all REST API endpoints.

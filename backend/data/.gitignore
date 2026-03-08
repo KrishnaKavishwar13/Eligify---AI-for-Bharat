@@ -1,0 +1,6 @@
+# Ignore persistence data (user-generated content)
+persistence/
+backups/
+
+# Keep seed data
+!internships.json

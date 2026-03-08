@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\models\skill.py
+# hypothesis_version: 6.151.9
+
+[100, 'addedAt', 'claimed', 'currentProficiency', 'domain_knowledge', 'framework', 'inProgressSkills', 'in_progress', 'lastUpdated', 'lastUpdatedAt', 'manual', 'normalizedName', 'proficiencyLevel', 'programming_language', 'project', 'relatedSkills', 'resume', 'skillId', 'skillName', 'soft_skill', 'sourceDetails', 'targetProficiency', 'tool', 'totalSkills', 'userId', 'validation', 'validationId', 'verified', 'verifiedAt', 'verifiedSkills']

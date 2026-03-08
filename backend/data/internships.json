@@ -1,0 +1,1566 @@
+[
+  {
+    "internshipId": "int_001",
+    "title": "Software Engineering Intern",
+    "company": "Google",
+    "description": "Work on cutting-edge distributed systems and cloud infrastructure. Build scalable services used by millions.",
+    "requiredSkills": [
+      {
+        "name": "Python",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Data Structures",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Algorithms",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "System Design",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 10
+      },
+      {
+        "name": "REST APIs",
+        "proficiencyLevel": 65,
+        "mandatory": false,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 100000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-04-30",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_002",
+    "title": "Full Stack Developer Intern",
+    "company": "Microsoft",
+    "description": "Build modern web applications using React and .NET. Contribute to Azure cloud services.",
+    "requiredSkills": [
+      {
+        "name": "React",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Node.js",
+        "proficiencyLevel": 65,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "TypeScript",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "SQL",
+        "proficiencyLevel": 55,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 95000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Hyderabad, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-05-15",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_003",
+    "title": "Data Science Intern",
+    "company": "Amazon",
+    "description": "Apply machine learning to solve real-world problems in e-commerce. Work with large-scale datasets.",
+    "requiredSkills": [
+      {
+        "name": "Python",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Machine Learning",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Statistics",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Pandas",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "SQL",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 10
+      },
+      {
+        "name": "Data Visualization",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "5 months",
+    "stipend": {
+      "amount": 90000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-04-20",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_004",
+    "title": "Frontend Developer Intern",
+    "company": "Flipkart",
+    "description": "Build responsive and performant user interfaces for India's leading e-commerce platform.",
+    "requiredSkills": [
+      {
+        "name": "React",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "HTML",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "CSS",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Redux",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 50000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-05-30",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_005",
+    "title": "Backend Developer Intern",
+    "company": "Swiggy",
+    "description": "Design and implement scalable microservices for food delivery platform serving millions.",
+    "requiredSkills": [
+      {
+        "name": "Java",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Spring Boot",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Microservices",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 20
+      },
+      {
+        "name": "SQL",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "REST APIs",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Docker",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 5
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 55000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-10",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_006",
+    "title": "Mobile App Developer Intern",
+    "company": "Zomato",
+    "description": "Build features for Zomato's mobile app used by millions of food lovers across India.",
+    "requiredSkills": [
+      {
+        "name": "React Native",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Mobile Development",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "REST APIs",
+        "proficiencyLevel": 55,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "5 months",
+    "stipend": {
+      "amount": 48000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Gurugram, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-05-25",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_007",
+    "title": "DevOps Intern",
+    "company": "Paytm",
+    "description": "Automate infrastructure and deployment pipelines for India's leading fintech platform.",
+    "requiredSkills": [
+      {
+        "name": "Linux",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Docker",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Kubernetes",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 20
+      },
+      {
+        "name": "CI/CD",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Python",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 10
+      },
+      {
+        "name": "AWS",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 52000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Noida, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-05",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_008",
+    "title": "Machine Learning Intern",
+    "company": "Ola",
+    "description": "Build ML models for demand prediction, route optimization, and fraud detection.",
+    "requiredSkills": [
+      {
+        "name": "Python",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Machine Learning",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Deep Learning",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 20
+      },
+      {
+        "name": "TensorFlow",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Statistics",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 60000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-05-10",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_009",
+    "title": "Product Management Intern",
+    "company": "PhonePe",
+    "description": "Work on product strategy and roadmap for India's fastest-growing payments platform.",
+    "requiredSkills": [
+      {
+        "name": "Product Management",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Data Analysis",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "SQL",
+        "proficiencyLevel": 55,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Communication",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "User Research",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "5 months",
+    "stipend": {
+      "amount": 45000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-15",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_010",
+    "title": "UI/UX Design Intern",
+    "company": "Razorpay",
+    "description": "Design intuitive interfaces for payment solutions used by thousands of businesses.",
+    "requiredSkills": [
+      {
+        "name": "Figma",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "UI Design",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "UX Design",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Prototyping",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "User Research",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 5
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "4 months",
+    "stipend": {
+      "amount": 40000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "remote",
+    "applicationDeadline": "2026-05-20",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_011",
+    "title": "Cloud Engineer Intern",
+    "company": "Freshworks",
+    "description": "Build and maintain cloud infrastructure for SaaS products serving global customers.",
+    "requiredSkills": [
+      {
+        "name": "AWS",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Python",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Terraform",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 20
+      },
+      {
+        "name": "Linux",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Networking",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 50000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Chennai, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-06-01",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_012",
+    "title": "Data Analyst Intern",
+    "company": "Myntra",
+    "description": "Analyze customer behavior and sales data to drive business decisions in fashion e-commerce.",
+    "requiredSkills": [
+      {
+        "name": "SQL",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Excel",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Data Visualization",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Python",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 20
+      },
+      {
+        "name": "Statistics",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "5 months",
+    "stipend": {
+      "amount": 35000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-05-28",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_013",
+    "title": "Cybersecurity Intern",
+    "company": "Jio",
+    "description": "Work on security infrastructure for India's largest telecom network.",
+    "requiredSkills": [
+      {
+        "name": "Cybersecurity",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Networking",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Linux",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Python",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Ethical Hacking",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 55000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Mumbai, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-06-08",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_014",
+    "title": "QA Automation Intern",
+    "company": "Salesforce",
+    "description": "Build automated testing frameworks for enterprise CRM platform.",
+    "requiredSkills": [
+      {
+        "name": "Selenium",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Java",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Testing",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "CI/CD",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "5 months",
+    "stipend": {
+      "amount": 48000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Hyderabad, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-05-18",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_015",
+    "title": "Blockchain Developer Intern",
+    "company": "Polygon",
+    "description": "Build decentralized applications on Ethereum scaling solutions.",
+    "requiredSkills": [
+      {
+        "name": "Solidity",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Blockchain",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Web3",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Smart Contracts",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 70000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Remote",
+    "type": "remote",
+    "applicationDeadline": "2026-06-20",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_016",
+    "title": "AI Research Intern",
+    "company": "NVIDIA",
+    "description": "Research and develop cutting-edge AI algorithms for computer vision and NLP.",
+    "requiredSkills": [
+      {
+        "name": "Python",
+        "proficiencyLevel": 80,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Deep Learning",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "PyTorch",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Research",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Mathematics",
+        "proficiencyLevel": 70,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 85000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Pune, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-04-25",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_017",
+    "title": "Game Developer Intern",
+    "company": "Dream11",
+    "description": "Build engaging gaming experiences for India's largest fantasy sports platform.",
+    "requiredSkills": [
+      {
+        "name": "Unity",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "C#",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Game Development",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "3D Graphics",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 5
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "5 months",
+    "stipend": {
+      "amount": 45000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Mumbai, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-05-22",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_018",
+    "title": "Business Analyst Intern",
+    "company": "Accenture",
+    "description": "Analyze business processes and provide data-driven recommendations for enterprise clients.",
+    "requiredSkills": [
+      {
+        "name": "Data Analysis",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Excel",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "SQL",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Communication",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "PowerPoint",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 30000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-12",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_019",
+    "title": "IoT Developer Intern",
+    "company": "Bosch",
+    "description": "Develop IoT solutions for smart home and industrial automation.",
+    "requiredSkills": [
+      {
+        "name": "IoT",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Embedded Systems",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "C++",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Python",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "MQTT",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 42000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-05-30",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_020",
+    "title": "Content Writer Intern",
+    "company": "Unacademy",
+    "description": "Create educational content for India's largest online learning platform.",
+    "requiredSkills": [
+      {
+        "name": "Content Writing",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 35
+      },
+      {
+        "name": "Communication",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "Research",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "SEO",
+        "proficiencyLevel": 50,
+        "mandatory": false,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "4 months",
+    "stipend": {
+      "amount": 25000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "remote",
+    "applicationDeadline": "2026-06-05",
+    "startDate": "2026-06-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_021",
+    "title": "Web Developer Intern",
+    "company": "Infosys",
+    "description": "Build responsive web applications for enterprise clients using modern frameworks.",
+    "requiredSkills": [
+      {
+        "name": "HTML",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "CSS",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "React",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 20
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 25000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Pune, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-06-30",
+    "startDate": "2026-07-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_022",
+    "title": "React Developer Intern",
+    "company": "Wipro",
+    "description": "Develop modern single-page applications using React ecosystem.",
+    "requiredSkills": [
+      {
+        "name": "React",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "HTML",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "CSS",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 55,
+        "mandatory": true,
+        "weight": 15
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 30000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-25",
+    "startDate": "2026-07-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_023",
+    "title": "Python Backend Intern",
+    "company": "Zomato",
+    "description": "Build scalable backend services for food delivery platform.",
+    "requiredSkills": [
+      {
+        "name": "Python",
+        "proficiencyLevel": 75,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "FastAPI",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "SQL",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "REST API",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 45000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-20",
+    "startDate": "2026-07-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_024",
+    "title": "Full Stack JavaScript Intern",
+    "company": "Razorpay",
+    "description": "Build payment solutions using Node.js and React.",
+    "requiredSkills": [
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "React",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Node.js",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "MongoDB",
+        "proficiencyLevel": 55,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "REST API",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 5
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 50000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-06-18",
+    "startDate": "2026-07-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_025",
+    "title": "TypeScript Developer Intern",
+    "company": "Atlassian",
+    "description": "Build collaboration tools using TypeScript and modern web technologies.",
+    "requiredSkills": [
+      {
+        "name": "TypeScript",
+        "proficiencyLevel": 70,
+        "mandatory": true,
+        "weight": 30
+      },
+      {
+        "name": "React",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 20
+      },
+      {
+        "name": "Node.js",
+        "proficiencyLevel": 60,
+        "mandatory": false,
+        "weight": 15
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 55,
+        "mandatory": true,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 55000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Bangalore, India",
+    "type": "hybrid",
+    "applicationDeadline": "2026-06-22",
+    "startDate": "2026-07-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  },
+  {
+    "internshipId": "int_026",
+    "title": "Junior Web Developer",
+    "company": "TCS",
+    "description": "Entry-level web development role for building client websites.",
+    "requiredSkills": [
+      {
+        "name": "HTML",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "CSS",
+        "proficiencyLevel": 65,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "JavaScript",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 25
+      },
+      {
+        "name": "Git",
+        "proficiencyLevel": 50,
+        "mandatory": true,
+        "weight": 15
+      },
+      {
+        "name": "Communication",
+        "proficiencyLevel": 60,
+        "mandatory": true,
+        "weight": 10
+      }
+    ],
+    "preferredSkills": [],
+    "duration": "6 months",
+    "stipend": {
+      "amount": 20000,
+      "currency": "INR",
+      "period": "monthly"
+    },
+    "location": "Mumbai, India",
+    "type": "onsite",
+    "applicationDeadline": "2026-07-10",
+    "startDate": "2026-08-01",
+    "endDate": null,
+    "eligibilityCriteria": null,
+    "applicationUrl": null,
+    "applicationProcess": null,
+    "status": "active",
+    "postedBy": "admin",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-01T00:00:00Z",
+    "viewCount": 0,
+    "applicationCount": 0
+  }
+]

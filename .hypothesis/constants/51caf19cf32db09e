@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\services\auth_service.py
+# hypothesis_version: 6.151.9
+
+['Communication', 'FastAPI', 'Git', 'JavaScript', 'Python', 'React', 'SQL', 'access_token', 'addedAt', 'category', 'certifications', 'communication', 'createdAt', 'created_at', 'education', 'email', 'email_verified', 'experience', 'fastapi', 'git', 'githubUsername', 'javascript', 'lastLoginAt', 'lastUpdated', 'lastUpdatedAt', 'linkedinUrl', 'location', 'name', 'normalizedName', 'onboardingComplete', 'password_hash', 'personalInfo', 'phone', 'portfolioUrl', 'proficiencyLevel', 'projects', 'python', 'react', 'refresh', 'refresh_token', 'resumeS3Uri', 'resumeUploadedAt', 'role', 'skillId', 'skills', 'source', 'sql', 'status', 'sub', 'totalSkills', 'updatedAt', 'userId', 'user_id', 'verified', 'verifiedAt', 'verifiedSkills']

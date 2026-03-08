@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\utils\dynamodb.py
+# hypothesis_version: 6.151.9
+
+[0.1, 'ALL_NEW', 'Attributes', 'Code', 'ConditionExpression', 'Error', 'FilterExpression', 'IndexName', 'Item', 'Items', 'Key', 'Keys', 'Limit', 'Responses', 'ReturnValues', 'ScanIndexForward', 'UpdateExpression', 'ValidationException', 'dynamodb']

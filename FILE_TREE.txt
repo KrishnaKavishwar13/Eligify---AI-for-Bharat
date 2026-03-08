@@ -1,0 +1,210 @@
+ELIGIFY FRONTEND - COMPLETE FILE STRUCTURE
+=====================================================
+
+frontend/
+├── README.md                           # Project documentation and setup instructions
+├── package.json                        # Dependencies, scripts, and project metadata
+├── package-lock.json                   # Dependency lock file for consistent installs
+├── next.config.js                      # Next.js configuration with API proxy setup
+├── tailwind.config.js                  # Tailwind CSS configuration with custom theme
+├── tailwind.config.ts                  # TypeScript version of Tailwind config
+├── tsconfig.json                       # TypeScript compiler configuration
+├── postcss.config.js                   # PostCSS configuration for Tailwind
+├── next-env.d.ts                       # Next.js TypeScript declarations
+├── .env.local.example                  # Environment variables template
+├── .eslintrc.json                      # ESLint configuration for code quality
+├── .prettierrc                         # Prettier configuration for code formatting
+├── .gitignore                          # Git ignore rules
+├── settings.json                       # VS Code workspace settings
+│
+├── app/                                # Next.js 14 App Router - Main application pages
+│   ├── layout.tsx                      # Root layout with providers and global components
+│   ├── page.tsx                        # Home page (redirects to landing)
+│   ├── not-found.tsx                   # 404 error page
+│   │
+│   ├── auth/                           # Authentication pages
+│   │   ├── signin/
+│   │   │   └── page.tsx                # User sign-in page with form validation
+│   │   └── signup/
+│   │       └── page.tsx                # User registration page with form validation
+│   │
+│   ├── dashboard/
+│   │   └── page.tsx                    # Main dashboard with stats and quick actions
+│   │
+│   ├── landing/
+│   │   └── page.tsx                    # Landing page for unauthenticated users
+│   │
+│   ├── profile/
+│   │   └── page.tsx                    # User profile management and resume upload
+│   │
+│   ├── internships/
+│   │   └── page.tsx                    # Internship listings with matching algorithm
+│   │
+│   ├── projects/
+│   │   ├── page.tsx                    # Project listings and management
+│   │   └── [id]/
+│   │       └── page.tsx                # Individual project details and milestones
+│   │
+│   └── skillgenie/                     # SkillGenie AI learning assistant
+│       ├── page.tsx                    # SkillGenie dashboard and learning path
+│       ├── assessment/
+│       │   └── page.tsx                # Skill assessment interface
+│       ├── project/
+│       │   └── page.tsx                # AI project generation
+│       ├── result/
+│       │   └── page.tsx                # Assessment results and recommendations
+│       └── submit/
+│           └── page.tsx                # Project submission for validation
+│
+├── components/                         # Reusable React components
+│   ├── Providers.tsx                   # React Query and notification providers
+│   ├── ErrorBoundary.tsx              # Error boundary for graceful error handling
+│   ├── NotificationBanner.tsx          # Toast notification system
+│   ├── ProtectedRoute.tsx              # Authentication guard component
+│   ├── ChatWidget.tsx                  # AI chat interface component
+│   ├── ConditionalChatWidget.tsx       # Conditional chat widget display
+│   │
+│   ├── Layout/                         # Layout components
+│   │   ├── Header.tsx                  # Navigation header with user menu
+│   │   └── MainLayout.tsx              # Main application layout wrapper
+│   │
+│   ├── Dashboard/                      # Dashboard-specific components
+│   │   └── (empty - components inline in page)
+│   │
+│   ├── Profile/                        # Profile management components
+│   │   ├── EditProfileModal.tsx        # Profile editing modal with form validation
+│   │   └── ResumeUpload.tsx            # Resume upload with drag & drop
+│   │
+│   ├── Internships/                    # Internship-related components
+│   │   ├── InternshipCard.tsx          # Individual internship display card
+│   │   └── InternshipDetailModal.tsx   # Detailed internship information modal
+│   │
+│   ├── Projects/                       # Project management components
+│   │   ├── ProjectCard.tsx             # Project card with progress tracking
+│   │   └── GenerateProjectModal.tsx    # AI project generation modal
+│   │
+│   └── Skills/                         # Skill management components
+│       ├── SkillGraph.tsx              # Interactive skill visualization
+│       └── AddSkillModal.tsx           # Manual skill addition modal
+│
+├── hooks/                              # Custom React hooks for business logic
+│   ├── useAuth.ts                      # Authentication operations (login, logout, signup)
+│   ├── useProfile.ts                   # Profile data management and updates
+│   ├── useInternships.ts               # Internship data fetching and classification
+│   ├── useProjects.ts                  # Project management and generation
+│   ├── useSkillGraph.ts                # Skill graph operations and visualization
+│   └── useNotifications.ts             # Notification management system
+│
+├── lib/                                # Core utilities and configurations
+│   ├── api.ts                          # Axios instance with request/response interceptors
+│   ├── auth.ts                         # Zustand authentication store
+│   ├── constants.ts                    # API routes, app routes, and constants
+│   ├── utils.ts                        # Utility functions (formatting, validation, etc.)
+│   ├── queryClient.ts                  # React Query configuration
+│   ├── notifications.ts                # Zustand notification store
+│   ├── validations.ts                  # Zod schema validations for forms
+│   ├── mockAuth.ts                     # Mock authentication for development
+│   └── mockData.ts                     # Mock data for development and testing
+│
+├── types/                              # TypeScript type definitions
+│   ├── index.ts                        # Core domain types (User, Project, Skill, etc.)
+│   └── api.ts                          # API request/response type definitions
+│
+├── styles/                             # Global styles and CSS
+│   └── globals.css                     # Global styles with Tailwind components
+│
+├── public/                             # Static assets (currently empty)
+│
+├── node_modules/                       # NPM dependencies (auto-generated)
+│
+├── .next/                              # Next.js build output (auto-generated)
+│   ├── cache/                          # Build cache
+│   ├── server/                         # Server-side build files
+│   ├── static/                         # Static assets
+│   └── types/                          # Generated TypeScript types
+│
+└── Documentation Files (Export Package):
+    ├── FRONTEND_EXPORT_MANIFEST.md     # Complete file structure and overview
+    ├── FRONTEND_SETUP_GUIDE.md         # Step-by-step setup instructions
+    ├── API_INTEGRATION_REFERENCE.md    # Complete API endpoint documentation
+    ├── COMPONENT_ARCHITECTURE.md       # Component structure and relationships
+    ├── INTEGRATION_CHECKLIST.md        # Backend integration checklist
+    └── FILE_TREE.txt                   # This file - complete directory structure
+
+KEY FILE PURPOSES:
+==================
+
+CONFIGURATION FILES:
+- package.json: All dependencies and npm scripts
+- next.config.js: API proxy configuration for backend integration
+- tailwind.config.js: Custom blue gradient theme and animations
+- tsconfig.json: TypeScript configuration with path aliases
+- .env.local.example: Environment variables template
+
+CORE APPLICATION:
+- app/layout.tsx: Root layout with providers
+- app/page.tsx: Home page redirect
+- components/Providers.tsx: React Query and state providers
+- lib/api.ts: Axios client with JWT interceptors
+- lib/auth.ts: Authentication state management
+
+BUSINESS LOGIC:
+- hooks/: Custom hooks for all data operations
+- lib/constants.ts: All API endpoints and routes
+- types/: Complete TypeScript definitions
+- lib/mockData.ts: Development mock data
+
+UI COMPONENTS:
+- components/Layout/: Navigation and layout
+- components/[Feature]/: Feature-specific components
+- styles/globals.css: Tailwind component classes
+
+PAGES (App Router):
+- app/dashboard/: Main user dashboard
+- app/auth/: Authentication pages
+- app/profile/: Profile management
+- app/internships/: Internship browsing
+- app/projects/: Project management
+- app/skillgenie/: AI learning assistant
+
+DEPENDENCIES SUMMARY:
+====================
+
+PRODUCTION:
+- Next.js 14: React framework with App Router
+- React 18: UI library
+- TypeScript: Type safety
+- Tailwind CSS: Utility-first styling
+- React Query: Server state management
+- Zustand: Client state management
+- React Hook Form: Form handling
+- Zod: Schema validation
+- Axios: HTTP client
+- Recharts: Data visualization
+- Lucide React: Icon library
+
+DEVELOPMENT:
+- ESLint: Code linting
+- Prettier: Code formatting
+- TypeScript ESLint: TypeScript linting
+- Tailwind Prettier Plugin: Class sorting
+
+INTEGRATION POINTS:
+==================
+
+BACKEND API ENDPOINTS:
+- Authentication: /auth/signup, /auth/signin, /auth/refresh
+- Profile: /profile, /profile/upload-resume
+- Skills: /skills, /skills/gaps
+- Internships: /internships, /internships/classify
+- Projects: /projects, /copilot/generate-project
+- Validation: /validate/submit, /validate/{id}
+
+ENVIRONMENT VARIABLES:
+- NEXT_PUBLIC_API_URL: Backend API URL
+- NEXT_PUBLIC_USE_MOCK_API: Mock/real API toggle
+- NEXT_PUBLIC_JWT_SECRET: JWT secret key
+- File upload configuration variables
+
+This structure provides a complete, production-ready frontend application
+with comprehensive documentation for seamless backend integration.

@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\models\__init__.py
+# hypothesis_version: 6.151.9
+
+['AuthResult', 'Certification', 'Education', 'EligibilityCriteria', 'Experience', 'GeneratedProject', 'Internship', 'InternshipMatch', 'Milestone', 'PersonalInfo', 'ProjectEntry', 'ProjectSuggestion', 'RequiredSkill', 'Resource', 'SkillCategory', 'SkillGap', 'SkillGraph', 'SkillNode', 'SkillSource', 'SkillStatus', 'Stipend', 'StudentProfile', 'TechStackItem', 'TokenValidation', 'UserRole', 'ValidationCriterion']

@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\models\internship.py
+# hypothesis_version: 6.151.9
+
+[1.0, 100, 'INR', 'active', 'almostEligible', 'applicationCount', 'applicationDeadline', 'applicationProcess', 'applicationUrl', 'createdAt', 'eligibilityCriteria', 'endDate', 'graduationYear', 'internshipId', 'matchScore', 'matchedSkills', 'minCGPA', 'missingSkills', 'notEligible', 'postedBy', 'preferredSkills', 'proficiencyLevel', 'requiredSkills', 'startDate', 'updatedAt', 'viewCount']

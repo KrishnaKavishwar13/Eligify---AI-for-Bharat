@@ -1,0 +1,72 @@
+{
+  "title": "E-commerce API with Authentication and CRUD Operations",
+  "description": "Build a RESTful API using Node.js, TypeScript, and PostgreSQL to manage products, orders, and users. Implement authentication and authorization mechanisms.",
+  "objectives": [
+    "Learn to use TypeORM for database interactions in TypeScript",
+    "Implement password hashing and salting using bcrypt",
+    "Develop CRUD operations for products, orders, and users"
+  ],
+  "techStack": [
+    {
+      "category": "backend",
+      "technology": "Node.js",
+      "purpose": "API"
+    },
+    {
+      "category": "database",
+      "technology": "PostgreSQL",
+      "purpose": "Storage"
+    },
+    {
+      "category": "programming language",
+      "technology": "TypeScript",
+      "purpose": "Development"
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Setup",
+      "description": "Initialize project, install dependencies, and set up database schema",
+      "tasks": [
+        "Create new Node.js project with TypeScript",
+        "Install TypeORM and PostgreSQL driver"
+      ],
+      "estimatedHours": 4,
+      "order": 1
+    },
+    {
+      "title": "Development",
+      "description": "Implement authentication, authorization, and CRUD operations for products, orders, and users",
+      "tasks": [
+        "Implement user registration and login",
+        "Create product and order entities with CRUD operations"
+      ],
+      "estimatedHours": 12,
+      "order": 2
+    },
+    {
+      "title": "Testing",
+      "description": "Write unit tests and integration tests for API endpoints",
+      "tasks": [
+        "Use Jest and Supertest for testing",
+        "Implement error handling and logging"
+      ],
+      "estimatedHours": 6,
+      "order": 3
+    }
+  ],
+  "estimatedDuration": "2-4 weeks",
+  "difficulty": "intermediate",
+  "resources": [
+    {
+      "type": "documentation",
+      "title": "TypeORM Documentation",
+      "url": "https://typeorm.io/"
+    },
+    {
+      "type": "tutorial",
+      "title": "Building a RESTful API with Node.js and TypeScript",
+      "url": "https://www.tutorialspoint.com/typescript/typescript_restful_api.htm"
+    }
+  ]
+}

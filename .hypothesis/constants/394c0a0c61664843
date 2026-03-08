@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\utils\s3.py
+# hypothesis_version: 6.151.9
+
+[1024, 3600, '%Y%m%d%H%M%S', '.docx', '.pdf', '.txt', '/', 'AES256', 'Body', 'Bucket', 'ContentType', 'Key', 'Metadata', 'ServerSideEncryption', '_', 'get_object', 'original_filename', 's3', 's3://', 'uploaded_at', 'user_id']

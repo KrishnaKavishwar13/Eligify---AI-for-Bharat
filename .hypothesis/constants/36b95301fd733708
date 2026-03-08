@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\models\project.py
+# hypothesis_version: 6.151.9
+
+[100, 'abandoned', 'acceptedAt', 'checkDetails', 'checkType', 'completed', 'completedAt', 'createdAt', 'criterionId', 'estimatedDuration', 'estimatedHours', 'generatedFor', 'githubRepoUrl', 'in_progress', 'internshipsUnlocked', 'milestoneId', 'projectId', 'relevanceScore', 'skillsAddressed', 'skillsToLearn', 'skillsToReinforce', 'studentLevel', 'submissionId', 'submittedAt', 'suggested', 'targetInternshipId', 'targetSkills', 'techStack', 'timeCommitment', 'updatedAt', 'userId', 'validationCriteria']

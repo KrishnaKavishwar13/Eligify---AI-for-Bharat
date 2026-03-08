@@ -1,0 +1,4 @@
+# file: C:\Users\ASUS\Documents\GitHub\eligify-ai-for-bharat\backend\src\utils\auth.py
+# hypothesis_version: 6.151.9
+
+['access', 'access_token', 'auto', 'bcrypt', 'exp', 'expires_at', 'iat', 'refresh', 'refresh_token', 'role', 'sub', 'type', 'user_id', 'verify_exp', 'verify_signature']

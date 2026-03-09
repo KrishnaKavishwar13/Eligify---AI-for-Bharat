@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import {
   Award,
@@ -18,6 +19,7 @@ import { APP_ROUTES } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import SkillGraph from '@/components/Skills/SkillGraph';
 import { SkillSpiderChart, JobRoleRadarChart, SkillPrioritiesWidget } from '@/components/Dashboard';
+import ResumeUpload from '@/components/Profile/ResumeUpload';
 
 function StatCard({
   title,
@@ -95,6 +97,7 @@ export default function DashboardPage() {
   const { eligible, almostEligible, notEligible, isLoading: internshipsLoading } =
     useInternships();
   const { projects, isLoading: projectsLoading } = useProjects();
+  const [showResumeUpload, setShowResumeUpload] = useState(false);
 
   const isLoading =
     profileLoading || skillsLoading || internshipsLoading || projectsLoading;
@@ -144,13 +147,13 @@ export default function DashboardPage() {
               <p className="mt-1 text-xs text-gray-500">
                 PDF, DOCX, or TXT (max 10MB)
               </p>
-              <Link
-                href={APP_ROUTES.PROFILE}
+              <button
+                onClick={() => setShowResumeUpload(true)}
                 className="btn-primary mt-6 inline-flex items-center gap-2"
               >
                 <Upload className="h-4 w-4" />
                 Upload Resume
-              </Link>
+              </button>
             </div>
 
             <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
@@ -191,6 +194,28 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* Resume Upload Modal */}
+      {showResumeUpload && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="relative w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl">
+            <button
+              onClick={() => setShowResumeUpload(false)}
+              className="absolute right-4 top-4 rounded-lg p-2 hover:bg-gray-100"
+            >
+              <span className="sr-only">Close</span>
+              <svg className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Upload Your Resume</h2>
+            <p className="text-sm text-gray-600 mb-6">
+              Our AI will extract your skills and match you with relevant opportunities
+            </p>
+            <ResumeUpload />
+          </div>
+        </div>
+      )}
       </MainLayout>
     );
   }
@@ -258,13 +283,22 @@ export default function DashboardPage() {
             <h2 className="text-xl font-bold text-gray-900">Quick Actions</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {!profile?.resumeS3Uri && (
-                <QuickAction
-                  title="Upload Resume"
-                  description="Let AI extract your skills and experience"
-                  icon={Upload}
-                  href={APP_ROUTES.PROFILE}
-                  color="bg-gradient-to-br from-purple-500 to-pink-500"
-                />
+                <button
+                  onClick={() => setShowResumeUpload(true)}
+                  className="card-hover group flex items-start gap-4 transition-transform hover:scale-105 text-left"
+                >
+                  <div className="rounded-lg p-3 bg-gradient-to-br from-purple-500 to-pink-500">
+                    <Upload className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900 group-hover:text-primary">
+                      Upload Resume
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-600">
+                      Let AI extract your skills and experience
+                    </p>
+                  </div>
+                </button>
               )}
               <QuickAction
                 title="Browse Internships"

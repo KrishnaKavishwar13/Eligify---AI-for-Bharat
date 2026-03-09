@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Lock, User, Loader2, AlertCircle } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { getErrorMessage } from '@/lib/api';
@@ -40,8 +41,14 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-xl">
-            <span className="text-3xl font-bold text-white">E</span>
+          <div className="mx-auto flex h-16 w-16 items-center justify-center">
+            <Image 
+              src="/final-logo-eligify.png" 
+              alt="Eligify Logo" 
+              width={64} 
+              height={64}
+              className="object-contain"
+            />
           </div>
           <h1 className="mt-4 text-3xl font-bold text-gray-900">Create Account</h1>
           <p className="mt-2 text-gray-600">Start your journey with Eligify</p>

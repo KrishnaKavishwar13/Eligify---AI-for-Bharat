@@ -13,6 +13,7 @@ from src.handlers.internships_handler import router as internships_router
 from src.handlers.projects_handler import router as projects_router
 from src.handlers.intelligence_handler import router as intelligence_router
 from src.handlers.chat_handler import router as chat_router
+from src.handlers.assessment_handler import router as assessment_router
 from src.utils.errors import AppError
 
 # Configure logging
@@ -100,6 +101,7 @@ app.include_router(internships_router)
 app.include_router(projects_router)
 app.include_router(intelligence_router)
 app.include_router(chat_router)
+app.include_router(assessment_router)
 
 
 @app.get("/")

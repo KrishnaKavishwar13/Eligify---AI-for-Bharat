@@ -5,7 +5,7 @@ import { API_ROUTES } from './constants';
 // Create axios instance
 const api: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout: 30000,
+  timeout: 60000, // Increased to 60 seconds
   headers: {
     'Content-Type': 'application/json',
   },
@@ -80,6 +80,16 @@ export default api;
 // Helper function to handle API errors
 export function getErrorMessage(error: unknown): string {
   if (axios.isAxiosError(error)) {
+    // Check for timeout
+    if (error.code === 'ECONNABORTED') {
+      return 'Request timed out. Please check if the backend server is running.';
+    }
+    
+    // Check for network errors
+    if (error.code === 'ERR_NETWORK' || !error.response) {
+      return 'Cannot connect to server. Please ensure the backend is running on http://localhost:8000';
+    }
+    
     return (
       error.response?.data?.error?.message ||
       error.response?.data?.message ||

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { ArrowLeft, CheckCircle, Sparkles } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Sparkles, Loader2, AlertCircle } from 'lucide-react';
+import { api } from '@/lib/api';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,14 +11,24 @@ interface Question {
   id: number;
   question: string;
   options: string[];
-  correctAnswer: number;
+  correct_answer: number;
+  explanation?: string;
+}
+
+interface QuizResult {
+  score: number;
+  total_questions: number;
+  percentage: number;
+  passed: boolean;
+  correct_answers: number[];
+  explanations: string[];
+  feedback: string;
 }
 
 export default function SkillAssessmentPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   
-  // Handle both 'skill' (singular) and 'skills' (plural) parameters
   const skillsParam = searchParams.get('skills') || searchParams.get('skill') || 'HR Basics';
   const skillsArray = skillsParam.split(',').map(s => s.trim());
   const primarySkill = skillsArray[0];
@@ -25,70 +36,44 @@ export default function SkillAssessmentPage() {
     ? `${skillsArray.slice(0, 2).join(', ')}${skillsArray.length > 2 ? ` +${skillsArray.length - 2} more` : ''}`
     : primarySkill;
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(0);
+  const [result, setResult] = useState<QuizResult | null>(null);
+  const [evaluating, setEvaluating] = useState(false);
 
-  // Generate questions based on the skills
-  const questions: Question[] = [
-    {
-      id: 1,
-      question: `What is a fundamental concept you should understand about ${primarySkill}?`,
-      options: [
-        'Basic syntax and structure',
-        'Advanced optimization techniques',
-        'Enterprise architecture patterns',
-        'Legacy system maintenance',
-      ],
-      correctAnswer: 0,
-    },
-    {
-      id: 2,
-      question: `Which of the following is a common use case for ${primarySkill}?`,
-      options: [
-        'Building scalable applications',
-        'Managing hardware resources',
-        'Designing physical products',
-        'Conducting market research',
-      ],
-      correctAnswer: 0,
-    },
-    {
-      id: 3,
-      question: `What is an important best practice when working with ${primarySkill}?`,
-      options: [
-        'Ignoring documentation',
-        'Writing clean, maintainable code',
-        'Avoiding testing',
-        'Using deprecated features',
-      ],
-      correctAnswer: 1,
-    },
-    {
-      id: 4,
-      question: `How would you approach learning ${primarySkill} effectively?`,
-      options: [
-        'Only reading theory',
-        'Memorizing syntax without practice',
-        'Building hands-on projects',
-        'Avoiding community resources',
-      ],
-      correctAnswer: 2,
-    },
-    {
-      id: 5,
-      question: `What makes ${primarySkill} valuable in the job market?`,
-      options: [
-        'It\'s rarely used',
-        'It solves real-world problems',
-        'It\'s only for beginners',
-        'It has no practical applications',
-      ],
-      correctAnswer: 1,
-    },
-  ];
+  // Generate questions on mount
+  useEffect(() => {
+    generateQuestions();
+  }, []);
+
+  const generateQuestions = async () => {
+    try {
+      setLoading(true);
+      setError('');
+      
+      const response = await api.post('/assessment/generate-questions', {
+        skill: primarySkill,
+        difficulty: 'intermediate',
+        num_questions: 5
+      });
+      
+      if (response.data.success) {
+        setQuestions(response.data.data.questions);
+      } else {
+        throw new Error('Failed to generate questions');
+      }
+    } catch (err: any) {
+      console.error('Error generating questions:', err);
+      setError(err.response?.data?.detail || 'Failed to generate questions. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -104,28 +89,89 @@ export default function SkillAssessmentPage() {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null);
     } else {
-      // Calculate score
-      const correctCount = newAnswers.reduce((count, answer, index) => {
-        return answer === questions[index].correctAnswer ? count + 1 : count;
-      }, 0);
-      const finalScore = (correctCount / questions.length) * 100;
-      setScore(finalScore);
-      setShowResult(true);
+      // Submit quiz for evaluation
+      evaluateQuiz(newAnswers);
+    }
+  };
+
+  const evaluateQuiz = async (finalAnswers: number[]) => {
+    try {
+      setEvaluating(true);
+      
+      const response = await api.post('/assessment/evaluate-quiz', {
+        skill: primarySkill,
+        questions: questions,
+        answers: finalAnswers
+      });
+      
+      if (response.data.success) {
+        setResult(response.data.data);
+        setShowResult(true);
+      } else {
+        throw new Error('Failed to evaluate quiz');
+      }
+    } catch (err: any) {
+      console.error('Error evaluating quiz:', err);
+      setError(err.response?.data?.detail || 'Failed to evaluate quiz. Please try again.');
+    } finally {
+      setEvaluating(false);
     }
   };
 
   const handleFinish = () => {
-    if (score >= 60) {
-      // Passed - go to main project
+    if (result && result.passed) {
       router.push(`/skillgenie/project?skills=${encodeURIComponent(skillsParam)}&level=main`);
     } else {
-      // Failed - go to beginner project
       router.push(`/skillgenie/project?skills=${encodeURIComponent(skillsParam)}&level=beginner`);
     }
   };
 
-  if (showResult) {
-    const passed = score >= 60;
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
+          <p className="mt-4 text-gray-600">Generating questions with AI...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error && !questions.length) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-white flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white rounded-xl p-8 shadow-xl text-center">
+          <AlertCircle className="h-12 w-12 text-red-500 mx-auto" />
+          <h2 className="mt-4 text-xl font-bold text-gray-900">Error</h2>
+          <p className="mt-2 text-gray-600">{error}</p>
+          <button
+            onClick={generateQuestions}
+            className="mt-6 btn-primary"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Evaluating state
+  if (evaluating) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
+          <p className="mt-4 text-gray-600">Evaluating your answers...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Result screen
+  if (showResult && result) {
+    const passed = result.passed;
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-white">
@@ -148,33 +194,40 @@ export default function SkillAssessmentPage() {
             </h1>
 
             <div className="mt-6">
-              <div className="text-6xl font-bold text-primary">{score}%</div>
-              <div className="mt-2 text-gray-600">Your Score</div>
+              <div className="text-6xl font-bold text-primary">{result.percentage}%</div>
+              <div className="mt-2 text-gray-600">
+                {result.score} out of {result.total_questions} correct
+              </div>
             </div>
 
-            <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
-              {passed ? (
-                <>
-                  <h3 className="font-semibold text-gray-900">
-                    Great job! You're ready for the main project.
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-600">
-                    You've demonstrated a solid understanding of {skillsDisplay}. 
-                    Let's move on to building a real-world project.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <h3 className="font-semibold text-gray-900">
-                    Start with a foundational project
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-600">
-                    No worries! We'll start with a beginner-friendly project 
-                    to help you build the basics of {skillsDisplay}.
-                  </p>
-                </>
-              )}
+            <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6 text-left">
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {passed ? '🎉 Great job!' : '💪 Keep going!'}
+              </h3>
+              <p className="text-sm text-gray-700">
+                {result.feedback}
+              </p>
             </div>
+
+            {/* Show explanations for incorrect answers */}
+            {result.correct_answers.some((correct, idx) => correct !== answers[idx]) && (
+              <div className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-6 text-left">
+                <h3 className="font-semibold text-blue-900 mb-3">Review Your Answers</h3>
+                <div className="space-y-3">
+                  {result.correct_answers.map((correct, idx) => {
+                    if (correct !== answers[idx]) {
+                      return (
+                        <div key={idx} className="text-sm">
+                          <p className="font-medium text-gray-900">Question {idx + 1}</p>
+                          <p className="text-gray-700 mt-1">{result.explanations[idx]}</p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              </div>
+            )}
 
             <button
               onClick={handleFinish}
@@ -188,6 +241,7 @@ export default function SkillAssessmentPage() {
     );
   }
 
+  // Quiz screen
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
@@ -230,7 +284,7 @@ export default function SkillAssessmentPage() {
           <div className="mb-8">
             <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
               <Sparkles className="h-4 w-4" />
-              {skillsDisplay}
+              AI Generated
             </div>
             <h2 className="mt-4 text-2xl font-bold text-gray-900">
               {questions[currentQuestion].question}

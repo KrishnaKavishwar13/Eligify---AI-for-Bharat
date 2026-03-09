@@ -1,22 +1,95 @@
-"""AI service with Ollama (local LLM)"""
-
+"""AI service with Groq API for project generation and Ollama for resume parsing"""
 import json
 import logging
 from typing import Optional, Dict, Any, List
 import httpx
 
+from src.config.settings import settings
 from src.utils.retry import retry_ollama
 from src.utils.errors import AIServiceError, ServiceUnavailableError
 
 logger = logging.getLogger(__name__)
 
-# Ollama API endpoint
+# Ollama API endpoint (for resume parsing)
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3.1:8b"
 
+# Groq API configuration (for project generation)
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_API_KEY = settings.GROQ_API_KEY
+GROQ_MODEL = settings.GROQ_MODEL
+
 
 class AIService:
-    """AI service for resume parsing and project generation using Ollama"""
+    """AI service for resume parsing and project generation"""
+    
+    @staticmethod
+    @retry_ollama(max_attempts=3)
+    async def call_groq(prompt: str, temperature: float = 0.7) -> Optional[str]:
+        """
+        Call Groq API for project generation
+        
+        Args:
+            prompt: The prompt to send to Groq
+            temperature: Sampling temperature (0.0 to 1.0)
+            
+        Returns:
+            Generated text or None if failed
+        """
+        if not GROQ_API_KEY:
+            logger.error("GROQ_API_KEY not configured")
+            raise ServiceUnavailableError(
+                "Groq",
+                "Groq API key not configured. Please set GROQ_API_KEY in .env file"
+            )
+        
+        try:
+            async with httpx.AsyncClient(timeout=60.0) as client:
+                response = await client.post(
+                    GROQ_API_URL,
+                    headers={
+                        "Authorization": f"Bearer {GROQ_API_KEY}",
+                        "Content-Type": "application/json"
+                    },
+                    json={
+                        "model": GROQ_MODEL,
+                        "messages": [
+                            {
+                                "role": "system",
+                                "content": "You are an expert project designer. You create practical, hands-on learning projects. Always return valid JSON."
+                            },
+                            {
+                                "role": "user",
+                                "content": prompt
+                            }
+                        ],
+                        "temperature": temperature,
+                        "max_tokens": 2000,
+                        "response_format": {"type": "json_object"}
+                    }
+                )
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    generated_text = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+                    if not generated_text:
+                        logger.warning("Groq returned empty response")
+                        return None
+                    return generated_text
+                else:
+                    error_msg = f"Groq API error: {response.status_code}"
+                    logger.error(f"{error_msg} - {response.text}")
+                    return None
+                    
+        except httpx.ConnectError as e:
+            logger.error(f"Groq connection failed: {e}")
+            return None
+        except httpx.TimeoutException as e:
+            logger.error(f"Groq request timed out: {e}")
+            return None
+        except Exception as e:
+            logger.error(f"Unexpected error calling Groq: {e}")
+            return None
     
     @staticmethod
     @retry_ollama(max_attempts=3)
@@ -78,17 +151,11 @@ class AIService:
         except Exception as e:
             logger.error(f"Unexpected error calling Ollama: {e}")
             raise AIServiceError(f"Unexpected AI service error: {str(e)}")
-        except httpx.TimeoutException as e:
-            print(f"Ollama request timed out: {e}")
-            return None
-        except Exception as e:
-            print(f"Ollama call failed: {type(e).__name__}: {e}")
-            return None
     
     @staticmethod
     async def extract_skills_from_resume(resume_text: str) -> Dict[str, Any]:
         """
-        Extract skills from resume text using Ollama
+        Extract skills from resume text using Groq API (with Ollama fallback)
         
         Args:
             resume_text: Extracted text from resume
@@ -129,11 +196,60 @@ Rules:
 
 JSON:"""
 
+        # Try Groq first
         try:
+            logger.info("Attempting skill extraction with Groq API")
+            response_text = await AIService.call_groq(prompt, temperature=0.2)
+            
+            if response_text:
+                # Parse and validate Groq response
+                response_text = response_text.strip()
+                
+                # Remove markdown code blocks
+                if "```json" in response_text:
+                    response_text = response_text.split("```json")[1].split("```")[0]
+                elif "```" in response_text:
+                    response_text = response_text.split("```")[1].split("```")[0]
+                
+                response_text = response_text.strip()
+                
+                # Try to find JSON object in response
+                if "{" in response_text and "}" in response_text:
+                    start = response_text.find("{")
+                    end = response_text.rfind("}") + 1
+                    response_text = response_text[start:end]
+                
+                # Parse JSON
+                result = json.loads(response_text)
+                
+                # Validate skills format
+                skills = result.get("skills", [])
+                if isinstance(skills, list) and len(skills) > 0:
+                    validated_skills = []
+                    for skill in skills:
+                        if isinstance(skill, dict) and "name" in skill:
+                            validated_skills.append({
+                                "name": skill["name"],
+                                "category": skill.get("category", "technical"),
+                                "proficiency": skill.get("proficiency", 50)
+                            })
+                    
+                    if validated_skills:
+                        logger.info(f"✅ Groq extracted {len(validated_skills)} skills from resume")
+                        return {"skills": validated_skills}
+                
+        except json.JSONDecodeError as e:
+            logger.warning(f"Groq JSON parsing error: {e}, falling back to Ollama")
+        except Exception as e:
+            logger.warning(f"Groq skill extraction failed: {e}, falling back to Ollama")
+        
+        # Fallback to Ollama
+        try:
+            logger.info("Falling back to Ollama for skill extraction")
             response_text = await AIService.call_ollama(prompt, temperature=0.2)
             
             if not response_text:
-                logger.warning("AI returned empty response for resume extraction")
+                logger.warning("Ollama returned empty response for resume extraction")
                 return {"skills": []}
             
             # Clean response - remove markdown and extra text
@@ -159,7 +275,7 @@ JSON:"""
             # Validate skills format
             skills = result.get("skills", [])
             if not isinstance(skills, list):
-                logger.warning(f"Skills is not a list: {type(skills)}")
+                logger.warning(f"Ollama skills is not a list: {type(skills)}")
                 return {"skills": []}
             
             # Ensure each skill has required fields
@@ -172,15 +288,15 @@ JSON:"""
                         "proficiency": skill.get("proficiency", 50)
                     })
             
-            logger.info(f"Extracted {len(validated_skills)} skills from resume")
+            logger.info(f"✅ Ollama extracted {len(validated_skills)} skills from resume")
             return {"skills": validated_skills}
             
         except json.JSONDecodeError as e:
-            logger.error(f"JSON parsing error: {e}")
+            logger.error(f"Ollama JSON parsing error: {e}")
             logger.error(f"Response was: {response_text[:500] if response_text else 'None'}")
             return {"skills": []}
         except Exception as e:
-            logger.error(f"Resume extraction error: {e}")
+            logger.error(f"Ollama extraction error: {e}")
             return {"skills": []}
     
     @staticmethod
@@ -190,7 +306,7 @@ JSON:"""
         user_context: Optional[Dict[str, Any]] = None
     ) -> Optional[Dict[str, Any]]:
         """
-        Generate project roadmap using Ollama
+        Generate project roadmap using Groq API
         
         Args:
             target_skills: Skills to learn
@@ -246,10 +362,11 @@ Return ONLY JSON (no markdown, no explanation):
 Make it practical for learning {skills_str}. Return ONLY JSON."""
 
         try:
-            response_text = await AIService.call_ollama(prompt, temperature=0.7)
+            response_text = await AIService.call_groq(prompt, temperature=0.7)
             
             if not response_text:
                 # Fallback to template-based project
+                logger.warning("Groq returned empty response, using fallback")
                 return AIService._generate_fallback_project(target_skills, student_level)
             
             # Clean response

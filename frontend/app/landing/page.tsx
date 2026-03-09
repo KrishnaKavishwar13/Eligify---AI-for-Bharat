@@ -2,6 +2,7 @@ import GradientButton from '@/components/GradientButton';
 import SectionHeader from '@/components/SectionHeader';
 import Card from '@/components/Card';
 import SkillBar from '@/components/SkillBar';
+import Image from 'next/image';
 
 export default function LandingPage() {
   return (
@@ -10,10 +11,17 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="container mx-auto px-6 py-20 text-center">
         <div className="max-w-5xl mx-auto">
-          {/* Top Badge */}
-          <div className="inline-block mb-8">
-            <span className="px-6 py-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-sm font-semibold">
-              AI-Powered Employability System
+          {/* Logo and Brand */}
+          <div className="inline-flex items-center gap-2 mb-8">
+            <Image 
+              src="/final-logo-eligify.png" 
+              alt="Eligify Logo" 
+              width={80} 
+              height={80}
+              className="object-contain"
+            />
+            <span className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+              Eligify
             </span>
           </div>
 

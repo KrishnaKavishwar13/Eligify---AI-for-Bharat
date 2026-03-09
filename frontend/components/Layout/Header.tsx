@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   Menu,
@@ -43,9 +44,13 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-8">
           <Link href={APP_ROUTES.DASHBOARD} className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-lg">
-              <span className="text-xl font-bold text-white">E</span>
-            </div>
+            <Image 
+              src="/final-logo-eligify.png" 
+              alt="Eligify Logo" 
+              width={40} 
+              height={40}
+              className="object-contain"
+            />
             <span className="text-xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Eligify</span>
           </Link>
 

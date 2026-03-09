@@ -93,7 +93,7 @@ export default function InternshipCard({
   const handleUnlockWithSkillGenie = (e: React.MouseEvent) => {
     e.stopPropagation();
     // Navigate to SkillGenie assessment with missing skills
-    const skillsParam = missingSkills.join(',');
+    const skillsParam = missingSkills.map((s) => s.skillName).join(',');
     router.push(`${APP_ROUTES.SKILLGENIE_ASSESSMENT}?skills=${encodeURIComponent(skillsParam)}`);
   };
 
